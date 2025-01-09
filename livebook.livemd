@@ -1,0 +1,159 @@
+# Elixir
+
+## Section
+
+FUNCTIONS
+
+<!-- livebook:{"break_markdown":true} -->
+
+1. Anonymous Function
+
+```elixir
+add = fn a, b -> a + b end
+IO.puts(add.(3, 4)) 
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+7
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+:ok
+```
+
+CONTROL STRUCTURE
+
+<!-- livebook:{"break_markdown":true} -->
+
+1. with
+
+```elixir
+defmodule MyModule do
+  def fetch_data do
+    {:ok, "Some data"}
+  end
+
+  def process_data do
+    with {:ok, data} <- fetch_data(),
+         result <- String.upcase(data) do
+      IO.puts("Processed data: #{result}")
+    else
+      {:error, reason} -> IO.puts("Error: #{reason}")
+    end
+  end
+end
+
+MyModule.process_data()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+Processed data: SOME DATA
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+:ok
+```
+
+1. cond
+
+```elixir
+x = 8
+
+cond do
+  x < 5 -> IO.puts("x is less than 5")
+  x == 5 -> IO.puts("x is equal to 5")
+  x > 5 -> IO.puts("x is greater than 5")
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+x is greater than 5
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+:ok
+```
+
+1. case
+
+```elixir
+x = :ok
+
+case x do
+  :ok -> IO.puts("Everything is okay!")
+  :error -> IO.puts("An error occurred!")
+  _ -> IO.puts("Unknown status")
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+Everything is okay!
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+:ok
+```
+
+1. unless
+
+```elixir
+x = 3
+
+unless x > 5 do
+  IO.puts("x is not greater than 5")
+else
+  IO.puts("x is greater than 5")
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+x is not greater than 5
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+:ok
+```
+
+1. if
+
+```elixir
+x = 10
+
+if x > 5 do
+  IO.puts("x is greater than 5")
+else
+  IO.puts("x is not greater than 5")
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+x is greater than 5
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+:ok
+```
