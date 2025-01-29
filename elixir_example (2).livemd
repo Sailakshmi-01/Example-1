@@ -1,0 +1,597 @@
+# Elixir Example
+
+## Section
+
+BASICS
+
+<!-- livebook:{"break_markdown":true} -->
+
+1. Integers
+
+```elixir
+defmodule IntegerExample do
+  def check_positive_or_negative(number) do
+    if number > 0 do
+      IO.puts("Positive number")
+    else
+      IO.puts("Non-positive number")
+    end
+  end
+end
+
+IntegerExample.check_positive_or_negative(5)
+```
+
+1. Boolean
+
+```elixir
+if true do
+  IO.puts("This will print.")
+else
+  IO.puts("This won't print.")
+end
+
+unless false do
+  IO.puts("This will also print.")
+end
+```
+
+1. Atoms
+
+```elixir
+user = %{name: "John", age: 30}
+
+IO.puts(user[:name])  
+IO.puts(user[:age])   
+```
+
+1. float
+
+```elixir
+float_example = 3.14
+IO.puts(float_example) 
+```
+
+1. String
+
+```elixir
+greeting = "Hello, "
+name = "python"
+message = greeting <> name <> "!"
+
+IO.puts(message)  
+```
+
+BASIC OPERATIONS
+
+<!-- livebook:{"break_markdown":true} -->
+
+1. Arithmetic
+
+```elixir
+sum = 123 + 987
+IO.puts(sum) 
+```
+
+1. Boolean
+
+```elixir
+if true do
+  IO.puts("This will print.")
+else
+  IO.puts("This won't print.")
+end
+
+unless false do
+  IO.puts("This will also print.")
+end
+```
+
+1. Comparsison
+
+```elixir
+defmodule Example do
+
+  def check(x) when x < 10 do
+    IO.puts("Less than 10")
+  end
+  
+  def check(x) when x >= 10 do
+    IO.puts("Greater than or equal to 10")
+  end
+end
+
+Example.check(5)   
+Example.check(15)  
+```
+
+1. String interpolation
+
+```elixir
+a = 5
+b = 10
+result = "The sum of #{a} and #{b} is #{a + b}."
+IO.puts(result)
+# Output: "The sum of 5 and 10 is 15."
+```
+
+COLLECTIONS
+
+<!-- livebook:{"break_markdown":true} -->
+
+Lists
+
+```elixir
+list = [1, 2, 3, 4, 5]
+IO.inspect(list)  
+```
+
+1. List concatenation
+
+```elixir
+list1 = [1, 2, 3]
+list2 = [4, 5, 6]
+concatenated_list = list1 ++ list2
+IO.inspect(concatenated_list)  
+```
+
+1. List Subtraction
+
+```elixir
+list1 = [1, 2, 3, 4, 5]
+list2 = [2, 4]
+result = list1 -- list2
+IO.inspect(result)  
+```
+
+1. Head / Tail
+
+```elixir
+list = [1, 2, 3, 4]
+[head | tail] = list
+
+IO.inspect(head)  
+IO.inspect(tail)  
+```
+
+1. Tuples
+
+```elixir
+tuple = {10, 20, 30}
+
+{a, b, c} = tuple
+IO.inspect(a)  
+IO.inspect(b)  
+IO.inspect(c)  
+```
+
+1. Keyword lists
+
+```elixir
+keyword_list = [name: "Alice", age: 30, city: "Wonderland"]
+IO.inspect(keyword_list)
+```
+
+1. Maps
+
+```elixir
+keyword_list = [name: "Alice", age: 30, city: "Wonderland"]
+IO.inspect(keyword_list)
+```
+
+1. Maps
+
+```elixir
+map = %{name: "sai", age: 30, city: "Hyderabad"}
+updated_map = Map.put(map, :age, 21)
+
+IO.inspect(updated_map)
+```
+
+ENUM
+
+<!-- livebook:{"break_markdown":true} -->
+
+Overview
+
+```elixir
+# Simple function definition
+defmodule Math do
+  def add(a, b) do
+    a + b
+  end
+end
+
+# Calling the function
+IO.puts Math.add(3, 4)
+# Output: 7
+```
+
+1. All
+
+```elixir
+keyword_list = [a: 1, b: 2]
+result = Enum.map(keyword_list, fn {key, value} -> {key, value * 2} end)
+IO.inspect(result)  
+```
+
+1. Any
+
+```elixir
+list = [1, 2, 3, 4]
+result = Enum.any?(list, fn x -> x > 2 end)
+IO.inspect(result) 
+```
+
+1. Each
+
+```elixir
+list = [1, 2, 3]
+Enum.each(list, fn x -> IO.puts(x) end)
+```
+
+1. Map
+
+```elixir
+map = %{a: 1, b: 2, c: 3}
+result = Enum.map(map, fn {key, value} -> {key, value * 2} end)
+IO.inspect(result)  
+```
+
+1. Filter
+
+```elixir
+list = [1, 2, 3, 4, 5]
+result = Enum.filter(list, fn x -> rem(x, 2) == 0 end)
+IO.inspect(result)  
+```
+
+1. Reduce
+
+```elixir
+list = [1, 2, 3, 4]
+result = Enum.reduce(list, 0, fn x, acc -> acc + x end)
+IO.inspect(result) 
+```
+
+1. Sort
+
+```elixir
+list = [5, 2, 8, 1, 3]
+result = Enum.sort(list)
+IO.inspect(result) 
+```
+
+1. Uniq
+
+```elixir
+list = [1, 2, 2, 3, 4, 4]
+result = Enum.uniq(list)
+IO.inspect(result) 
+```
+
+1. Min
+
+```elixir
+list = [5, 3, 8, 1, 7]
+result = Enum.min(list)
+IO.inspect(result)  
+```
+
+1. Max
+
+```elixir
+list = [5, 3, 8, 1, 7]
+result = Enum.max(list)
+IO.inspect(result)  
+```
+
+PATTERN MATCHING
+
+<!-- livebook:{"break_markdown":true} -->
+
+1. Match operator
+
+```elixir
+# Basic matching with the match operator
+x = 10
+y = 10
+
+# This will match, as both values are the same.
+IO.inspect(x == y)  
+```
+
+1. Pin operator
+
+```elixir
+x = 5
+case 10 do
+  ^x -> IO.puts("Matched x")  
+  _ -> IO.puts("Did not match")  
+end
+```
+
+CONTROL STRUCTURE
+
+<!-- livebook:{"break_markdown":true} -->
+
+1. with
+
+```elixir
+defmodule MyModule do
+  def fetch_data do
+    {:ok, "Some data"}
+  end
+
+  def process_data do
+    with {:ok, data} <- fetch_data(),
+         result <- String.upcase(data) do
+      IO.puts("Processed data: #{result}")
+    else
+      {:error, reason} -> IO.puts("Error: #{reason}")
+    end
+  end
+end
+
+MyModule.process_data()
+```
+
+1. cond
+
+```elixir
+x = 8
+
+cond do
+  x < 5 -> IO.puts("x is less than 5")
+  x == 5 -> IO.puts("x is equal to 5")
+  x > 5 -> IO.puts("x is greater than 5")
+end
+```
+
+1. case
+
+```elixir
+x = :ok
+
+case x do
+  :ok -> IO.puts("Everything is okay!")
+  :error -> IO.puts("An error occurred!")
+  _ -> IO.puts("Unknown status")
+end
+```
+
+1. unless
+
+```elixir
+x = 3
+
+unless x > 5 do
+  IO.puts("x is not greater than 5")
+else
+  IO.puts("x is greater than 5")
+end
+```
+
+1. if
+
+```elixir
+x = 10
+
+if x > 5 do
+  IO.puts("x is greater than 5")
+else
+  IO.puts("x is not greater than 5")
+end
+```
+
+FUNCTIONS
+
+<!-- livebook:{"break_markdown":true} -->
+
+1. Anonymous Function
+
+```elixir
+add = fn a, b -> a + b end
+IO.puts(add.(3, 4)) 
+```
+
+1. pattern matching
+
+```elixir
+defmodule Greeter do
+  def greet(:morning), do: "Good morning!"
+  def greet(:afternoon), do: "Good afternoon!"
+  def greet(:evening), do: "Good evening!"
+  def greet(_), do: "Hello!"
+end
+IO.puts Greeter.greet(:morning)     
+IO.puts Greeter.greet(:afternoon)   
+IO.puts Greeter.greet(:evening)     
+IO.puts Greeter.greet(:night)  
+```
+
+1. named function
+
+```elixir
+defmodule Math do
+  def add(a, b), do: a + b
+  def add(a, b, c), do: a + b + c
+end
+
+IO.puts Math.add(2, 3)        
+IO.puts Math.add(2, 3, 4) 
+```
+
+1. function naming and arity
+
+```elixir
+defmodule Calculator do
+  # Arity 1 function
+  def add(a), do: a + 1
+
+  # Arity 2 function
+  def add(a, b), do: a + b
+end
+
+IO.puts Calculator.add(5)     
+IO.puts Calculator.add(5, 10) 
+```
+
+1. functions and pattern matching
+
+```elixir
+defmodule ListMatcher do
+  def check([first | _tail]), do: "First element is #{first}"
+  def check([]), do: "List is empty"
+end
+
+IO.puts ListMatcher.check([1, 2, 3])  
+IO.puts ListMatcher.check([])   
+```
+
+1. private functions
+
+```elixir
+defmodule MyModule do
+  def public_function do
+    IO.puts("This is a public function")
+    private_function()
+  end
+
+  defp private_function do
+    IO.puts("This is a private function")
+  end
+end
+
+# Calling the public function
+MyModule.public_function()
+```
+
+1. Guards
+
+```elixir
+defmodule EvenOdd do
+  def check_number(x) when rem(x, 2) == 0 do
+    IO.puts("#{x} is even")
+  end
+
+  def check_number(x) when rem(x, 2) != 0 do
+    IO.puts("#{x} is odd")
+  end
+end
+
+# Calling the function
+EvenOdd.check_number(4)  
+EvenOdd.check_number(7)  
+```
+
+PIPE OPERATOR
+
+<!-- livebook:{"break_markdown":true} -->
+
+1. Introduction
+
+```elixir
+# Without pipe operator
+result = String.downcase("HELLO") |> String.split(" ") |> Enum.map(&String.capitalize/1)
+
+IO.inspect(result)
+# Output: ["Hello"]
+```
+
+```elixir
+result = 4
+         |> (fn x -> if rem(x, 2) == 0, do: "Even", else: "Odd" end).()
+
+IO.inspect(result)
+# Output: "Even"
+```
+
+MODULES
+
+```elixir
+defmodule MathOperations do
+  def add(a, b), do: a + b
+  def subtract(a, b), do: a - b
+  def multiply(a, b), do: a * b
+  def divide(a, b), do: a / b
+end
+```
+
+Example 2 :
+
+```elixir
+defmodule Example.Greetings do
+  def morning(name) do
+    "Good morning #{name}."
+  end
+
+  def evening(name) do
+    "Good night #{name}."
+  end
+end
+
+Example.Greetings.morning "sai"
+"Good morning sai."
+```
+
+1. Module Attributes
+
+```elixir
+defmodule Circle do
+  @pi 3.14159
+
+  def area(radius) do
+    @pi * radius * radius
+  end
+end
+```
+
+1. Structs
+
+```elixir
+defmodule Person do
+  defstruct name: "Unknown", age: 0
+end
+
+# Creating a new Person struct with defaults
+person1 = %Person{}
+IO.inspect(person1)
+
+# Creating a new Person struct with overridden values
+person2 = %Person{name: "Bob", age: 25}
+IO.inspect(person2)
+```
+
+1. composition
+
+```elixir
+defmodule Calculator do
+  def add(a, b), do: a + b
+  def subtract(a, b), do: a - b
+end
+
+defmodule AdvancedCalculator do
+  def square_root(x), do: :math.sqrt(x)
+  
+  # Composing Calculator with AdvancedCalculator
+  def calculate_sum_of_squares(a, b) do
+    square_sum = Calculator.add(a, b)
+    square_root(square_sum)
+  end
+end
+
+IO.puts(AdvancedCalculator.calculate_sum_of_squares(3, 4))  # Output: 2.6457513110645907
+```
+
+MIX
+
+<!-- livebook:{"break_markdown":true} -->
+
+1. New project
+
+```elixir
+
+
+
+```
